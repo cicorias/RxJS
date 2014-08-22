@@ -7,33 +7,32 @@ This comes with both `rx.async.js` which is for use in modern development enviro
 ## Details ##
 
 Files:
-- `rx.async.js`
-- `rx.async.compat.js`
+- [`rx.async.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.async.js) | [`rx.lite.compat.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.async.compat.js)
+- [`rx.lite.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.lite.js) | [`rx.lite.compat.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.lite.compat.js)
 
 NPM Packages:
-- `rx`
+- [`rx`](https://www.npmjs.org/package/rx)
 
 NuGet Packages:
-- `RxJS-Async`
+- [`RxJS-Async`](http://www.nuget.org/packages/RxJS-Async/)
+- [`RxJS-Lite`](http://www.nuget.org/packages/RxJS-Lite/)
 
 File Dependencies:
-- `rx.js` | `rx.compat.js`
-- `rx.binding.js`
-
-NPM Dependencies:
-- None
+- [`rx.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.js) | [`rx.compat.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.compat.js)
+- [`rx.binding.js`](https://github.com/Reactive-Extensions/RxJS/blob/master/dist/rx.binding.js)
 
 NuGet Dependencies:
-- RxJS-Main
-- RxJS-Binding
+- [`RxJS-Main`](http://www.nuget.org/packages/RxJS-Main/)
+- [`RxJS-Binding`](http://www.nuget.org/packages/RxJS-Binding/)
 
 ## Included Observable Operators ##
 
 ### `Observable Methods`
-- [`fromCallback`](#rxobservablefromcallbackfunc-scheduler-context-selector)
-- [`fromEvent`](#rxobservablefromeventelement-eventname-selector)
-- [`fromEventPattern`](#rxobservablefromeventpatternaddhandler-removehandler-selector)
-- [`fromNodeCallback`](#rxobservablefromnodecallbackfunc-scheduler-context-selector)
-- [`fromPromise`](#rxobservablefrompromisepromise)
-- [`start`](#rxobservablestartfunc-scheduler-context)
-- [`toAsync`](#rxobservabletoasyncfunc-scheduler-context)
+- [`fromCallback`](../api/core/operators/fromcallback.md)
+- [`fromEvent`](../api/core/operators/fromevent.md)
+- [`fromEventPattern`](../api/core/operators/fromeventpattern.md)
+- [`fromNodeCallback`](../api/core/operators/fromnodecallback.md)
+- [`fromPromise`](../api/core/operators/frompromise.md)
+- [`start`](../api/core/operators/start.md)
+- [`startAsync`](../api/core/operators/startasync.md)
+- [`toAsync`](../api/core/operators/toasync.md)

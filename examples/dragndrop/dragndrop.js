@@ -1,36 +1,40 @@
 (function (global) {
 
-    function main () {
-        var dragTarget = document.getElementById('dragTarget');
+  function main () {
+    var dragTarget = document.getElementById('dragTarget');
 
-        // Get the three major events
-        var mouseup = Rx.DOM.fromEvent(dragTarget, 'mouseup');
-        var mousemove = Rx.DOM.fromEvent(document, 'mousemove');
-        var mousedown = Rx.DOM.fromEvent(dragTarget, 'mousedown');
+    var down = 'pointerdown',
+      up = 'pointerup',
+      move = 'pointermove';
 
-        var mousedrag = mousedown.selectMany(function (md) {
+    // Get the three major events
+    var mouseup   = Rx.Observable.fromEvent(dragTarget, 'mouseup');
+    var mousemove = Rx.Observable.fromEvent(document,   'mousemove');
+    var mousedown = Rx.Observable.fromEvent(dragTarget, 'mousedown');
 
-            // calculate offsets when mouse down
-            var startX = md.offsetX, startY = md.offsetY;
+    var mousedrag = mousedown.flatMap(function (md) {
 
-            // Calculate delta with mousemove until mouseup
-            return mousemove.map(function (mm) {
-                (mm.preventDefault) ? mm.preventDefault() : event.returnValue = false; 
+      // calculate offsets when mouse down
+      var startX = md.offsetX, startY = md.offsetY;
 
-                return {
-                    left: mm.clientX - startX,
-                    top: mm.clientY - startY
-                };
-            }).takeUntil(mouseup);
-        });
+      // Calculate delta with mousemove until mouseup
+      return mousemove.map(function (mm) {
+        mm.preventDefault();
 
-        // Update position
-        subscription = mousedrag.subscribe(function (pos) {          
-            dragTarget.style.top = pos.top + 'px';
-            dragTarget.style.left = pos.left + 'px';
-        });
-    }
+        return {
+          left: mm.clientX - startX,
+          top: mm.clientY - startY
+        };
+      }).takeUntil(mouseup);
+    });
 
-    main();
+    // Update position
+    var subscription = mousedrag.subscribe(function (pos) {          
+      dragTarget.style.top = pos.top + 'px';
+      dragTarget.style.left = pos.left + 'px';
+    });
+  }
+
+  main();
 
 }(window));

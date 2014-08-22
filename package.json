@@ -2,7 +2,7 @@
   "name": "rx",
   "title": "Reactive Extensions for JavaScript (RxJS)",
   "description": "Library for composing asynchronous and event-based operations in JavaScript",
-  "version": "2.2.14",
+  "version": "2.3.4",
   "homepage": "https://github.com/Reactive-Extensions/RxJS",
   "author": {
     "name": "Cloud Programmability Team",
@@ -18,13 +18,14 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   ],
+  "bugs": "https://github.com/Reactive-Extensions/RxJS/issues",
   "jam": {
-    "main": "rx.js"
+    "main": "dist/rx.all.js"
   },
   "dependencies": {},
   "devDependencies": {
     "grunt-cli": "*",
-    "grunt": "~0.4.3",
+    "grunt": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-connect": "*",
     "grunt-contrib-uglify": "*",
@@ -32,14 +33,15 @@
     "grunt-contrib-qunit": "*",
     "grunt-contrib-watch": "*",
     "grunt-saucelabs": "*",
-    "grunt-conventional-changelog": "*",
     "load-grunt-tasks": "*"
   },
   "keywords": [
     "LINQ",
     "FRP",
     "Reactive",
-    "Events"
+    "Events",
+    "Rx",
+    "RxJS"
   ],
   "main": "rx.node.js",
   "scripts": {

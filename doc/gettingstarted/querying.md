@@ -59,7 +59,7 @@ source1.catch(source2)
 // => 3
 ```
 
-Finally, let’s look at [`onErrorResumeNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypeonerrorresumenextsecond. This operator will move on to source2 even if source1 cannot be completed due to an error. In the following example, even though source1 represents a sequence that terminates with an exception by using the [`throw`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablethrowexception-scheduler) operator, the subscriber will receive values (1,2,3) published by source2. Therefore, if you expect either source sequence to produce any error, it is a safer bet to use [`onErrorResumeNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypeonerrorresumenextsecond) to guarantee that the subscriber will still receive some values.
+Finally, let’s look at [`onErrorResumeNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypeonerrorresumenextsecond). This operator will move on to source2 even if source1 cannot be completed due to an error. In the following example, even though source1 represents a sequence that terminates with an exception by using the [`throw`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablethrowexception-scheduler) operator, the subscriber will receive values (1,2,3) published by source2. Therefore, if you expect either source sequence to produce any error, it is a safer bet to use [`onErrorResumeNext`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypeonerrorresumenextsecond) to guarantee that the subscriber will still receive some values.
 
 ```js
 var source1 = Rx.Observable.throw(new Error('An error has occurred.'));
@@ -99,8 +99,8 @@ In the following sample, which is an extension of the event conversion example w
 ```js
 var move = Rx.Observable.fromEvent(document, 'mousemove');
 
-var points = move.map(function (x) {
-	return { x: x.clientX, y: clientY };
+var points = move.map(function (e) {
+	return { x: e.clientX, y: e.clientY };
 });
 
 points.subscribe(
@@ -136,7 +136,7 @@ var subscription = resultSeq.subscribe(
 
 ## Filtering ##
 
-In the following example, we use the [`generate`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablegenerateinitialstate-condition-iterate-resultselector-scheduler) operator to create a simple observable sequence of numbers. The `generate` operator has several versions including with relative and absolute time scheduling. In our example, it takes an initial state (0 in our example), a conditional function to terminate (fewer than 10 times), an iterator (+1), a result selector (a square function of the current value). , and print out only those smaller than 5 using the [`filter`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypefilterpredicate-thisarg) or [`where`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypewherepredicate-thisarg) operators.
+In the following example, we use the [`generate`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablegenerateinitialstate-condition-iterate-resultselector-scheduler) operator to create a simple observable sequence of numbers. The `generate` operator has several versions including with relative and absolute time scheduling. In our example, it takes an initial state (0 in our example), a conditional function to terminate (fewer than 10 times), an iterator (+1), a result selector (a square function of the current value), and prints out only those smaller than 5 using the [`filter`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypefilterpredicate-thisarg) or [`where`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypewherepredicate-thisarg) operators.
  
 ```js
 var seq = Rx.Observable.generate(

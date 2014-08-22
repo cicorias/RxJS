@@ -46,23 +46,6 @@ test('Event_1', function () {
     equal(element.removeEventListenerCalled, true);
 });
 
-test('Event_2', function () {
-    var elements = [new FakeDOMStandardElement('foo')];
-
-    var d = Observable.fromEvent(elements, 'someEvent')
-        .subscribe(function (x) {
-            equal(x, 42);
-        });
-
-    elements[0].trigger('someEvent', 42);
-    equal(elements[0].addEventListenerCalled, true);
-    equal(elements[0].removeEventListenerCalled, false);    
-
-    d.dispose();
-
-    equal(elements[0].removeEventListenerCalled, true);    
-});
-
 /** Fake DOM Element */
 function FakeEventEmitter() {
     this.listeners = {};

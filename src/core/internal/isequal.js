@@ -19,9 +19,9 @@
     propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
   try {
-      suportNodeClass = !(toString.call(document) == objectClass && !({ 'toString': 0 } + ''));
+    suportNodeClass = !(toString.call(document) == objectClass && !({ 'toString': 0 } + ''));
   } catch(e) {
-      suportNodeClass = true;
+    suportNodeClass = true;
   }
 
   var shadowedProps = [
@@ -138,7 +138,7 @@
   }
 
   function isFunction(value) {
-    return typeof value == 'function';
+    return typeof value == 'function' || false;
   }
 
   // fallback for older versions of Chrome and Safari
